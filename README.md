@@ -1,5 +1,6 @@
 YumClub
 =======
 
-![My image](cching808.github.com/YumClub/misq/YumClubMockup.jpg)
-![My image](cching808.github.com/YumClub/misq/YumClubMockup2.jpg)
+![My image](https://github.com/cching808/YumClub/blob/master/misq/YumClubMockup.jpg)
+![My image](https://github.com/cching808/YumClub/blob/master/misq/YumClubMockup2.jpg)
+
