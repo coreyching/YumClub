@@ -1,0 +1,41 @@
+.navbar-inner{
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.navbar-center{
+  float: none;
+}
+
+.navbar{
+  height: 10%;
+  width: auto;
+  background-color: white;
+  border-color: white;
+  opacity: .85;
+}
+
+
+body {
+  padding-top: 55px;
+}
+
+.slide-image {
+  height: auto;
+  width: 100%;
+}
+
+
+.mainboot img {
+  clear: both;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+.thumbnail {
+  padding: none;
+}
+
+
+

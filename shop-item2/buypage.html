@@ -1,0 +1,126 @@
+<!doctype html> 
+<html lang = "en">
+<head>
+<meta charset="utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" > </script>
+</head>
+<body>
+
+<div class = "tits">
+<p><button onclick="geoFindMe()">Buy</button></p>
+<div id="out"></div>
+<div id = "print"> </div>
+<!-- style = "visibility: hidden"  -->
+
+<script> function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    output.innerHTML = '<p>Latitude is ' + latitude + ' <br>Longitude is ' + longitude + '</p>';
+
+    var string;
+    var address;
+    string = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + ","+longitude +"&key=AIzaSyCNq1WkVfwNUI4Esp9PlfpNwCY_dE1HUXA" ;
+
+ //    var req = new XMLHttpRequest();  
+	// req.open('GET', string, false);   
+	// req.send(null);  // no data need to send along with the request
+	// if(req.status == 200)  
+	//   dump(req.responseText);
+
+	// var obj = jQuery.parseJSON( '{ "results": "formatted_address": )
+
+	$.get( string, function( data ) {
+	  //var obj = JSON.parse( data);
+	  $( "#print").append( "formatted_address: " + JSON.stringify(data.results[0].formatted_address)) 
+	}, "json" );
+
+	
+  // mailMe();
+
+
+  function mailMe(){
+  address = document.getElementById('print').innerHTML;
+  alert(address);
+    $.ajax({
+     // console.log(data);
+        url: 'sms.php',
+        type: 'POST',
+        data: {id:address},
+        success: function(data) {
+            console.log(data); // Inspect this in your console
+        }
+    });
+};
+
+    //output.innerHTML = address;
+  };
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  };
+
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+  
+
+  return false;
+ 
+// handles drawing an error message
+function drawError () {
+    var container = document.getElementById('output');
+    container.innerHTML = 'Bummer: there was an error!';
+}
+// handles the response, adds the html
+function drawOutput(responseText) {
+    var container = document.getElementById('output');
+    container.innerHTML = responseText;
+} 
+// helper function for cross-browser request object
+function getRequest(url, success, error) {
+    var req = false;
+    try{
+        // most browsers
+        req = new XMLHttpRequest();
+    } catch (e){
+        // IE
+        try{
+            req = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            // try an older version
+            try{
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e){
+                return false;
+            }
+        }
+    }
+    if (!req) return false;
+    if (typeof success != 'function') success = function () {};
+    if (typeof error!= 'function') error = function () {};
+    req.onreadystatechange = function(){
+        if(req .readyState == 4){
+            return req.status === 200 ? 
+                success(req.responseText) : error(req.status)
+            ;
+        }
+    }
+    req.open("GET", url, true);
+    req.send(null);
+    return req;
+}
+}
+</script>
+</div>
+</body>
+</html>
