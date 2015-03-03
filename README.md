@@ -1,11 +1,11 @@
 YumClub
 =======
 
-![My image](https://github.com/cching808/YumClub/blob/master/misq/Description.png)
+![My image](https://github.com/cching808/YumClub/blob/master/misq/hermesandyumclub/Yum1.png)
 =====
-![My image](https://github.com/cching808/YumClub/blob/master/misq/YumClubMockup.jpg)
+![My image](https://github.com/cching808/YumClub/blob/master/misq/hermesandyumclub/Yum2.png)
 =====
-![My image](https://github.com/cching808/YumClub/blob/master/misq/YumClubMockup2.jpg)
+![My image](https://github.com/cching808/YumClub/blob/master/misq/hermesandyumclub/Yum3.png)
 =====
 Geolocation Feature when clicking Buy Button
 
